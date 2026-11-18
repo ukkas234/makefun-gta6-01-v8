@@ -1,6 +1,6 @@
 [
-  {"name":"1-start.png","query":"?shot=start"},
-  {"name":"2-drive.png","query":"?shot=drive"},
-  {"name":"3-chase.png","query":"?shot=chase"},
-  {"name":"4-night.png","query":"?shot=night"}
+  {"name":"1-start.jpg","query":"?shot=start"},
+  {"name":"2-drive.jpg","query":"?shot=drive"},
+  {"name":"3-chase.jpg","query":"?shot=chase"},
+  {"name":"4-night.jpg","query":"?shot=night"}
 ]
