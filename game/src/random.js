@@ -1,5 +1,6 @@
 // A small seeded random number generator (mulberry32): the same seed gives the same game,
-// which is what makes the screenshot scenes repeatable.
+// which is what makes the screenshot scenes repeatable. v9 uses it for the
+// traffic cars' lanes and speeds (see main.js).
 
 export function createRandom(seed) {
   let a = seed | 0;

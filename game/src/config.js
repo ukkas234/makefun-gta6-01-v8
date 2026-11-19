@@ -1,61 +1,35 @@
-// Every tuning number and colour in one place. The playfield is a fixed 1280x720 logical area;
-// the renderer scales it to the window, so no rule below depends on the screen size.
+// Solmara v9 — every tuning number in one place. The playfield is the harbor
+// service road loop (see world.js): one straight tile of LOOP units that
+// wraps, so driving never hits an edge.
 
-export const FIELD = { width: 1280, height: 720, groundY: 664 };
+export const LOOP = 150;
+export const HALF_LOOP = LOOP / 2;
 
-/** The simulation's fixed step, in seconds: 60 updates a second whatever the display's rate. */
-export const STEP = 1 / 60;
+/** Player car: top speed 18 u/s, police are deliberately a touch slower. */
+export const CAR = { maxSpeed: 18, minSpeed: -7, accel: 12, brake: 18, turn: .85, radius: 1.3 };
+export const POLICE = { maxSpeed: 15, accel: 10, turn: 1.6, spawnBehind: 22, count: 2 };
+export const TRAFFIC = { count: 4, minSpeed: 5, maxSpeed: 9, laneX: 3.2 };
+export const PLAYER = { walk: 5, run: 8, radius: .6 };
 
-export const PLAYER = {
-  width: 72,
-  height: 24,
-  speed: 560,
-  invulnerable: 1.5,
+/** Wanted 0-3. Ramming a pedestrian, a traffic car or a police car raises it;
+ * it decays one star per 5 s of clean time once no police are within 30 units
+ * and 10 s have passed since the last offense. */
+export const WANTED = { max: 3, decayAfter: 10, decayEvery: 5, policeNear: 30, roadblockAt: 3 };
+
+/** Mission: pick up at the south quay, deliver at the Low Tide bar. */
+export const MISSION = {
+  pickup: { x: 0, z: -40 },
+  delivery: { x: 0, z: 40 },
+  radius: 3.5,
 };
 
-export const LIVES = 3;
-
-export const BLOCK = {
-  minWidth: 40,
-  maxWidth: 110,
-  height: 36,
-  speed: 240,
-  speedPerLevel: 30,
-  speedJitter: 90,
-  interval: 0.55,
-  intervalScale: 0.88,
-  minInterval: 0.14,
-  dodgePoints: 1,
-};
-
-export const COIN = {
-  size: 24,
-  speed: 190,
-  speedPerLevel: 14,
-  interval: 1.4,
-  intervalJitter: 0.8,
-  points: 10,
-};
-
-/** Seconds of play per level, and the last level: speeds and spawn rates stop growing there. */
-export const LEVEL = { seconds: 12, max: 12 };
-
-/** How many falling things can exist at once; the pool is allocated once, at boot. */
-export const POOL_SIZE = 64;
+/** Where the best result is kept between visits (this browser only). */
+export const BEST_KEY = 'solmara.lowtide.best';
 
 export const PALETTE = {
-  backdrop: '#11141b',
-  sky: '#1b1f2a',
-  ground: '#2a3040',
-  player: '#4fc3f7',
-  block: '#e5534b',
-  coin: '#f2c94c',
-  panel: '#252b38',
-  text: '#eef1f5',
-  muted: '#8b93a3',
+  backdrop: '#11141b', sky: '#68b8ed', fog: '#dda366',
+  road: '#62615b', sand: '#bc986b', gold: '#e9a459',
+  text: '#f7edcf', muted: '#d2ded2',
 };
 
-export const FONT = 'system-ui, -apple-system, "Segoe UI", sans-serif';
-
-/** Where the best score is kept between visits (this browser only). */
-export const BEST_KEY = 'block-dodger.best';
+export const FONT = 'Arial, Helvetica, sans-serif';

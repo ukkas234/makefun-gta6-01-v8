@@ -1,4 +1,5 @@
-/**
+// v9 note: vendored Three.js module build, unmodified except this header line.
+ /**
  * @license
  * Copyright 2010-2026 Three.js Authors
  * SPDX-License-Identifier: MIT

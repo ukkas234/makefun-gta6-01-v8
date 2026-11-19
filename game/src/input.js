@@ -1,6 +1,8 @@
 // Keyboard and pointer input. Held keys give a steering direction; one-shot presses (start or
 // restart, pause) are queued as bit flags and taken once by the loop, so a press between two
 // frames is never lost and never counted twice.
+// v9 note: main.js handles the driving keys directly; this module is kept for
+// the kit's input contract and is not wired into the v9 loop.
 
 export const ACTION_CONFIRM = 1;
 export const ACTION_PAUSE = 2;
